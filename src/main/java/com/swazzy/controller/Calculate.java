@@ -13,13 +13,13 @@ import com.swazzy.model.Data;
 import com.swazzy.model.Result;
 import com.swazzy.service.Calculator;
 import com.swazzy.service.DataService;
+
 /**
  * 
- * @author Alexander D. Mahabir 
+ * @author Alexander D. Mahabir
  * @version $Revision: $:
- * @date 	$Date: $:
- * $Id: $:
- * Spring Framework, PriorityQueue, ForkJoin, Concurrency
+ * @date $Date: $: $Id: $: Spring Framework, PriorityQueue, ForkJoin,
+ *       Concurrency
  */
 @Controller
 public class Calculate {
@@ -28,16 +28,19 @@ public class Calculate {
 	Calculator calculator;
 	@Autowired
 	DataService dataService;
+
 	public void performCalculation(Integer size) {
 		List<Data> data = dataService.loadData(size);
 		BlockingQueue<Data> blkQueue = dataService.prioritizeData(data);
-		int processors = Runtime.getRuntime().availableProcessors();
-		ForkJoinPool fpool = new ForkJoinPool(processors);
-		ForkJoinComputer fjc = new ForkJoinComputer(blkQueue, calculator);
-		fpool.invoke(fjc);
-		List<Result> results = fjc.getResults();
-		log.debug("Result Size: " + results.size());
-		
+		if (blkQueue != null) {
+			int processors = Runtime.getRuntime().availableProcessors();
+			ForkJoinPool fpool = new ForkJoinPool(processors);
+			ForkJoinComputer fjc = new ForkJoinComputer(blkQueue, calculator);
+			fpool.invoke(fjc);
+			List<Result> results = fjc.getResults();
+			log.debug("Result Size: " + results.size());
+		}
+
 	}
-	
+
 }

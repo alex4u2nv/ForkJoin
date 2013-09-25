@@ -29,6 +29,8 @@ public class DefaultDataService implements DataService{
 	 */
 	@Override
 	public BlockingQueue<Data> prioritizeData(final List<Data> data) {
+		if (data==null || data.size()==0)
+			return null;
 		BlockingQueue<Data> blkQueue = new PriorityBlockingQueue<Data>(data.size(), new Comparator<Data>() {
 
 			/**

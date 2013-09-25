@@ -19,8 +19,7 @@ public class DefaultCalculator implements Calculator {
 
 	@Override
 	public Result calculate(Data data) {
-		// TODO Auto-generated method stub
-		return null;
+		return new Result();
 	}
 
 	/**
