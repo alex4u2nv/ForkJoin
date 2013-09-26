@@ -1,10 +1,12 @@
 package com.swazzy.computer;
 
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.RecursiveTask;
 
+import org.apache.commons.lang.SerializationUtils;
 import org.apache.log4j.Logger;
 
 import com.swazzy.model.Data;
@@ -41,9 +43,10 @@ public class ForkJoinComputer extends RecursiveTask<Result> {
 		this.blockingQueue = blockingQueue;
 		this.data = null;
 		this.calculator = calculator;
+		results = new LinkedList<Result>();
 		log.trace("Constructed FJ computer with blockingQueue of size: "
 				+ blockingQueue.size());
-		results = new LinkedList<Result>();
+		
 	}
 	/**
 	 * 
@@ -68,6 +71,7 @@ public class ForkJoinComputer extends RecursiveTask<Result> {
 			@Override public Result add(Result result01, Result result02) {return null;}
 			@Override
 			public Result calculate(Data data) {
+				log.trace("Summation calculations for : " + data);
 				return _calculator.calculateSum(data);
 			}
 		});
@@ -88,6 +92,7 @@ public class ForkJoinComputer extends RecursiveTask<Result> {
 			@Override public Result add(Result result01, Result result02) {return null;}
 			@Override
 			public Result calculate(Data data) {
+				log.trace("Product calculations for : " + data);
 				return _calculator.calculateProduct(data);
 			}
 		});
@@ -109,10 +114,12 @@ public class ForkJoinComputer extends RecursiveTask<Result> {
 			@Override
 			public Result calculate(Data data) {
 				int n = Integer.parseInt(data.getId().toString());
+				log.trace("Forking Fibonacci calculations for : " + data);
 				if (data.getId() <= 1)
 					return _calculator.calculateFibonacci(n);
-
-				ForkJoinComputer fjwComputer = generateFibonacciWorker(data);
+				Data data2 = (Data) SerializationUtils.clone(data);
+				data2.setId(data.getId()-2);
+				ForkJoinComputer fjwComputer = generateFibonacciWorker(data2);
 				fjwComputer.fork();
 				return _calculator.add(_calculator.calculateFibonacci(n - 1),
 						fjwComputer.join());
@@ -142,9 +149,12 @@ public class ForkJoinComputer extends RecursiveTask<Result> {
 				fjwp.fork();
 				workers.add(fjwp);
 
-				ForkJoinComputer fjwf = this.generateProductWorker(data);
+				ForkJoinComputer fjwf = this.generateFibonacciWorker(data);
 				fjwf.fork();
 				workers.add(fjwf);
+			}
+			for (ForkJoinComputer forkJoinComputer : workers) {
+				results.add(forkJoinComputer.join());
 			}
 		}
 		return this.calculator.calculate(data);
