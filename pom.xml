@@ -26,7 +26,13 @@
 		<junit.version>4.11</junit.version>
 
 	</properties>
-
+	<repositories>
+		<repository>
+			<id>ProjectRepo1</id>
+			<name>ProjectRepo1</name>
+			<url>file://${project.basedir}/lib</url>
+		</repository>
+	</repositories>
 	<dependencies>
 		<!-- Spring and Transactions -->
 		<dependency>
@@ -74,8 +80,12 @@
 			<artifactId>hibernate-entitymanager</artifactId>
 			<version>${hibernate.version}</version>
 		</dependency>
-
-
+		<!--  currently unused, but added for JDK 1.6 testing -->
+		<dependency>
+			<groupId>concurrency-interest</groupId>
+			<artifactId>jsr166</artifactId>
+			<version>y</version>
+		</dependency>
 		<!-- Test Artifacts -->
 		<dependency>
 			<groupId>org.springframework</groupId>

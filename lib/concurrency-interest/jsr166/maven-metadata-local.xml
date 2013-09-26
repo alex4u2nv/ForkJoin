@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <groupId>concurrency-interest</groupId>
+  <artifactId>jsr166</artifactId>
+  <versioning>
+    <release>y</release>
+    <versions>
+      <version>y</version>
+    </versions>
+    <lastUpdated>20130926025322</lastUpdated>
+  </versioning>
+</metadata>
