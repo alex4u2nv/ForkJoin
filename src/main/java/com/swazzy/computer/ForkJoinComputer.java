@@ -1,5 +1,6 @@
 package com.swazzy.computer;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
@@ -43,7 +44,7 @@ public class ForkJoinComputer extends RecursiveTask<Result> {
 		this.blockingQueue = blockingQueue;
 		this.data = null;
 		this.calculator = calculator;
-		results = new LinkedList<Result>();
+		results = new ArrayList<Result>();
 		log.trace("Constructed FJ computer with blockingQueue of size: "
 				+ blockingQueue.size());
 		
@@ -111,18 +112,26 @@ public class ForkJoinComputer extends RecursiveTask<Result> {
 			@Override public Result calculateProduct(Data data) {return null;}
 			@Override public Result calculateFibonacci(int n) {return null;}
 			@Override public Result add(Result result01, Result result02) {return null;}
+			//Also override the recursive calculation time.
 			@Override
 			public Result calculate(Data data) {
 				int n = Integer.parseInt(data.getId().toString());
+				Long nsStart = System.nanoTime();
 				log.trace("Forking Fibonacci calculations for : " + data);
-				if (data.getId() <= 1)
-					return _calculator.calculateFibonacci(n);
+				if (data.getId() <= 1) {
+					
+					Result result =_calculator.calculateFibonacci(n);
+					result.setNsCompleted(System.nanoTime() - nsStart);
+					return result;
+				}
 				Data data2 = (Data) SerializationUtils.clone(data);
 				data2.setId(data.getId()-2);
 				ForkJoinComputer fjwComputer = generateFibonacciWorker(data2);
 				fjwComputer.fork();
-				return _calculator.add(_calculator.calculateFibonacci(n - 1),
+				Result result= _calculator.add(_calculator.calculateFibonacci(n - 1),
 						fjwComputer.join());
+				result.setNsCompleted(System.nanoTime() - nsStart);
+				return result;
 
 			}
 		

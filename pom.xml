@@ -80,7 +80,7 @@
 			<artifactId>hibernate-entitymanager</artifactId>
 			<version>${hibernate.version}</version>
 		</dependency>
-		<!--  currently unused, but added for JDK 1.6 testing -->
+		<!-- currently unused, but added for JDK 1.6 testing -->
 		<dependency>
 			<groupId>concurrency-interest</groupId>
 			<artifactId>jsr166</artifactId>
@@ -98,6 +98,16 @@
 			<artifactId>junit</artifactId>
 			<version>${junit.version}</version>
 			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>xstream</groupId>
+			<artifactId>xstream</artifactId>
+			<version>1.2.2</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>2.4</version>
 		</dependency>
 
 	</dependencies>

@@ -6,7 +6,7 @@ import static org.junit.Assert.*;
 /**
  * The class <code>ResultTest</code> contains tests for the class <code>{@link Result}</code>.
  *
- * @generatedBy CodePro at 9/25/13 6:54 PM
+ * @generatedBy CodePro at 9/25/13 11:10 PM
  * @author Alex
  * @version $Revision: 1.0 $
  */
@@ -16,7 +16,7 @@ public class ResultTest {
 	 *
 	 * @throws Exception
 	 *
-	 * @generatedBy CodePro at 9/25/13 6:54 PM
+	 * @generatedBy CodePro at 9/25/13 11:10 PM
 	 */
 	@Test
 	public void testResult_1()
@@ -37,7 +37,7 @@ public class ResultTest {
 	 *
 	 * @throws Exception
 	 *
-	 * @generatedBy CodePro at 9/25/13 6:54 PM
+	 * @generatedBy CodePro at 9/25/13 11:10 PM
 	 */
 	@Test
 	public void testResult_2()
@@ -55,17 +55,40 @@ public class ResultTest {
 	}
 
 	/**
+	 * Run the Result(Float,String,Long,Data) constructor test.
+	 *
+	 * @throws Exception
+	 *
+	 * @generatedBy CodePro at 9/25/13 11:10 PM
+	 */
+	@Test
+	public void testResult_3()
+		throws Exception {
+		Float value = new Float(1.0f);
+		String name = "";
+		Long msCompleted = new Long(1L);
+		Data data = new Data();
+
+		Result result = new Result(value, name, msCompleted, data);
+
+		// add additional test code here
+		// An unexpected exception was thrown in user code while executing this test:
+		//    java.lang.NoClassDefFoundError: Could not initialize class com.swazzy.model.Data
+		assertNotNull(result);
+	}
+
+	/**
 	 * Run the boolean equals(Object) method test.
 	 *
 	 * @throws Exception
 	 *
-	 * @generatedBy CodePro at 9/25/13 6:54 PM
+	 * @generatedBy CodePro at 9/25/13 11:10 PM
 	 */
 	@Test
 	public void testEquals_1()
 		throws Exception {
-		Result fixture = new Result(new Float(1.0f), "", new Data());
-		Object obj = new Result(new Float(1.0f), "", new Data());
+		Result fixture = new Result(new Float(1.0f), "", new Long(1L), new Data());
+		Object obj = new Result(new Float(1.0f), "", new Long(1L), new Data());
 
 		boolean result = fixture.equals(obj);
 
@@ -80,13 +103,13 @@ public class ResultTest {
 	 *
 	 * @throws Exception
 	 *
-	 * @generatedBy CodePro at 9/25/13 6:54 PM
+	 * @generatedBy CodePro at 9/25/13 11:10 PM
 	 */
 	@Test
 	public void testEquals_2()
 		throws Exception {
-		Result fixture = new Result(new Float(1.0f), "", new Data());
-		Object obj = new Result(new Float(1.0f), "", new Data());
+		Result fixture = new Result(new Float(1.0f), "", new Long(1L), new Data());
+		Object obj =new Result(new Float(1.0f), "", new Long(1L), new Data());
 
 		boolean result = fixture.equals(obj);
 
@@ -101,13 +124,13 @@ public class ResultTest {
 	 *
 	 * @throws Exception
 	 *
-	 * @generatedBy CodePro at 9/25/13 6:54 PM
+	 * @generatedBy CodePro at 9/25/13 11:10 PM
 	 */
 	@Test
 	public void testEquals_3()
 		throws Exception {
-		Result fixture = new Result(new Float(1.0f), "", new Data());
-		Object obj = new Result(new Float(1.0f), "", new Data());
+		Result fixture = new Result(new Float(1.0f), "", new Long(1L), new Data());
+		Object obj = new Result(new Float(1.0f), "", new Long(1L), new Data());
 
 		boolean result = fixture.equals(obj);
 
@@ -122,19 +145,17 @@ public class ResultTest {
 	 *
 	 * @throws Exception
 	 *
-	 * @generatedBy CodePro at 9/25/13 6:54 PM
+	 * @generatedBy CodePro at 9/25/13 11:10 PM
 	 */
 	@Test
 	public void testEquals_4()
 		throws Exception {
-		Result fixture = new Result(new Float(1.0f), "", new Data());
-		Object obj = new Result(new Float(1.0f), "", new Data());
-
+		Result fixture = new Result(new Float(1.0f), "", new Long(1L), new Data());
+		Object obj = new Result(new Float(1.0f), "", new Long(1L), new Data());
+		
 		boolean result = fixture.equals(obj);
 
 		// add additional test code here
-		// An unexpected exception was thrown in user code while executing this test:
-		//    java.lang.NoClassDefFoundError: Could not initialize class com.swazzy.model.Data
 		assertTrue(result);
 	}
 
@@ -143,13 +164,13 @@ public class ResultTest {
 	 *
 	 * @throws Exception
 	 *
-	 * @generatedBy CodePro at 9/25/13 6:54 PM
+	 * @generatedBy CodePro at 9/25/13 11:10 PM
 	 */
 	@Test
 	public void testEquals_5()
 		throws Exception {
-		Result fixture = new Result(new Float(1.0f), "", new Data());
-		Object obj = new Result(new Float(1.0f), "", new Data());
+		Result fixture = new Result(new Float(1.0f), "", new Long(1L), new Data());
+		Object obj = new Result(new Float(1.0f), "", new Long(1L), new Data());
 
 		boolean result = fixture.equals(obj);
 
@@ -164,13 +185,13 @@ public class ResultTest {
 	 *
 	 * @throws Exception
 	 *
-	 * @generatedBy CodePro at 9/25/13 6:54 PM
+	 * @generatedBy CodePro at 9/25/13 11:10 PM
 	 */
 	@Test
 	public void testEquals_6()
 		throws Exception {
-		Result fixture = new Result(new Float(1.0f), "", new Data());
-		Object obj = new Result(new Float(1.0f), "", new Data());
+		Result fixture = new Result(new Float(1.0f), "", new Long(1L), new Data());
+		Object obj = new Result(new Float(1.0f), "", new Long(1L), new Data());
 
 		boolean result = fixture.equals(obj);
 
@@ -185,13 +206,13 @@ public class ResultTest {
 	 *
 	 * @throws Exception
 	 *
-	 * @generatedBy CodePro at 9/25/13 6:54 PM
+	 * @generatedBy CodePro at 9/25/13 11:10 PM
 	 */
 	@Test
 	public void testEquals_7()
 		throws Exception {
-		Result fixture = new Result(new Float(1.0f), "", new Data());
-		Object obj = new Result(new Float(1.0f), "", new Data());
+		Result fixture = new Result(new Float(1.0f), "", new Long(1L), new Data());
+		Object obj = new Result(new Float(1.0f), "", new Long(1L), new Data());
 
 		boolean result = fixture.equals(obj);
 
@@ -206,13 +227,34 @@ public class ResultTest {
 	 *
 	 * @throws Exception
 	 *
-	 * @generatedBy CodePro at 9/25/13 6:54 PM
+	 * @generatedBy CodePro at 9/25/13 11:10 PM
 	 */
 	@Test
 	public void testEquals_8()
 		throws Exception {
-		Result fixture = new Result((Float) null, "", new Data());
-		Object obj = new Result((Float) null, "", new Data());
+		Result fixture = new Result(new Float(1.0f), "", new Long(1L), new Data());
+		Object obj = new Result(new Float(1.0f), "", new Long(1L), new Data());
+
+		boolean result = fixture.equals(obj);
+
+		// add additional test code here
+		// An unexpected exception was thrown in user code while executing this test:
+		//    java.lang.NoClassDefFoundError: Could not initialize class com.swazzy.model.Data
+		assertTrue(result);
+	}
+
+	/**
+	 * Run the boolean equals(Object) method test.
+	 *
+	 * @throws Exception
+	 *
+	 * @generatedBy CodePro at 9/25/13 11:10 PM
+	 */
+	@Test
+	public void testEquals_9()
+		throws Exception {
+		Result fixture = new Result((Float) null, "", new Long(1L), new Data());
+		Object obj = new Result((Float) null, "", new Long(1L), new Data());
 
 		boolean result = fixture.equals(obj);
 
@@ -227,14 +269,34 @@ public class ResultTest {
 	 *
 	 * @throws Exception
 	 *
-	 * @generatedBy CodePro at 9/25/13 6:54 PM
+	 * @generatedBy CodePro at 9/25/13 11:10 PM
 	 */
 	@Test
 	public void testGetData_1()
 		throws Exception {
-		Result fixture = new Result(new Float(1.0f), "", new Data());
+		Result fixture = new Result(new Float(1.0f), "", new Long(1L), new Data());
 
 		Data result = fixture.getData();
+
+		// add additional test code here
+		// An unexpected exception was thrown in user code while executing this test:
+		//    java.lang.NoClassDefFoundError: Could not initialize class com.swazzy.model.Data
+		assertNotNull(result);
+	}
+
+	/**
+	 * Run the Long getMsCompleted() method test.
+	 *
+	 * @throws Exception
+	 *
+	 * @generatedBy CodePro at 9/25/13 11:10 PM
+	 */
+	@Test
+	public void testGetMsCompleted_1()
+		throws Exception {
+		Result fixture = new Result(new Float(1.0f), "", new Long(1L), new Data());
+
+		Long result = fixture.getNsCompleted();
 
 		// add additional test code here
 		// An unexpected exception was thrown in user code while executing this test:
@@ -247,12 +309,12 @@ public class ResultTest {
 	 *
 	 * @throws Exception
 	 *
-	 * @generatedBy CodePro at 9/25/13 6:54 PM
+	 * @generatedBy CodePro at 9/25/13 11:10 PM
 	 */
 	@Test
 	public void testGetName_1()
 		throws Exception {
-		Result fixture = new Result(new Float(1.0f), "", new Data());
+		Result fixture = new Result(new Float(1.0f), "", new Long(1L), new Data());
 
 		String result = fixture.getName();
 
@@ -267,12 +329,12 @@ public class ResultTest {
 	 *
 	 * @throws Exception
 	 *
-	 * @generatedBy CodePro at 9/25/13 6:54 PM
+	 * @generatedBy CodePro at 9/25/13 11:10 PM
 	 */
 	@Test
 	public void testGetValue_1()
 		throws Exception {
-		Result fixture = new Result(new Float(1.0f), "", new Data());
+		Result fixture = new Result(new Float(1.0f), "", new Long(1L), new Data());
 
 		Float result = fixture.getValue();
 
@@ -289,19 +351,17 @@ public class ResultTest {
 	 *
 	 * @throws Exception
 	 *
-	 * @generatedBy CodePro at 9/25/13 6:54 PM
+	 * @generatedBy CodePro at 9/25/13 11:10 PM
 	 */
 	@Test
 	public void testHashCode_1()
 		throws Exception {
-		Result fixture = new Result(new Float(1.0f), "", (Data) null);
+		Result fixture = new Result(new Float(1.0f), "", (Long) null, (Data) null);
 
 		int result = fixture.hashCode();
 
 		// add additional test code here
-		// An unexpected exception was thrown in user code while executing this test:
-		//    java.lang.NoClassDefFoundError: Could not initialize class com.swazzy.model.Result
-		assertEquals(1065383007, result);
+		assertEquals(1066276737, result);
 	}
 
 	/**
@@ -309,19 +369,17 @@ public class ResultTest {
 	 *
 	 * @throws Exception
 	 *
-	 * @generatedBy CodePro at 9/25/13 6:54 PM
+	 * @generatedBy CodePro at 9/25/13 11:10 PM
 	 */
 	@Test
 	public void testHashCode_2()
 		throws Exception {
-		Result fixture = new Result((Float) null, (String) null, new Data());
+		Result fixture = new Result((Float) null, (String) null, new Long(1L), new Data());
 
 		int result = fixture.hashCode();
 
 		// add additional test code here
-		// An unexpected exception was thrown in user code while executing this test:
-		//    java.lang.NoClassDefFoundError: Could not initialize class com.swazzy.model.Data
-		assertEquals(887533472, result);
+		assertEquals(1743734817, result);
 	}
 
 	/**
@@ -329,15 +387,35 @@ public class ResultTest {
 	 *
 	 * @throws Exception
 	 *
-	 * @generatedBy CodePro at 9/25/13 6:54 PM
+	 * @generatedBy CodePro at 9/25/13 11:10 PM
 	 */
 	@Test
 	public void testSetData_1()
 		throws Exception {
-		Result fixture = new Result(new Float(1.0f), "", new Data());
+		Result fixture = new Result(new Float(1.0f), "", new Long(1L), new Data());
 		Data data = new Data();
 
 		fixture.setData(data);
+
+		// add additional test code here
+		// An unexpected exception was thrown in user code while executing this test:
+		//    java.lang.NoClassDefFoundError: Could not initialize class com.swazzy.model.Data
+	}
+
+	/**
+	 * Run the void setMsCompleted(Long) method test.
+	 *
+	 * @throws Exception
+	 *
+	 * @generatedBy CodePro at 9/25/13 11:10 PM
+	 */
+	@Test
+	public void testSetMsCompleted_1()
+		throws Exception {
+		Result fixture = new Result(new Float(1.0f), "", new Long(1L), new Data());
+		Long msCompleted = new Long(1L);
+
+		fixture.setNsCompleted(msCompleted);
 
 		// add additional test code here
 		// An unexpected exception was thrown in user code while executing this test:
@@ -349,12 +427,12 @@ public class ResultTest {
 	 *
 	 * @throws Exception
 	 *
-	 * @generatedBy CodePro at 9/25/13 6:54 PM
+	 * @generatedBy CodePro at 9/25/13 11:10 PM
 	 */
 	@Test
 	public void testSetName_1()
 		throws Exception {
-		Result fixture = new Result(new Float(1.0f), "", new Data());
+		Result fixture = new Result(new Float(1.0f), "", new Long(1L), new Data());
 		String name = "";
 
 		fixture.setName(name);
@@ -369,12 +447,12 @@ public class ResultTest {
 	 *
 	 * @throws Exception
 	 *
-	 * @generatedBy CodePro at 9/25/13 6:54 PM
+	 * @generatedBy CodePro at 9/25/13 11:10 PM
 	 */
 	@Test
 	public void testSetValue_1()
 		throws Exception {
-		Result fixture = new Result(new Float(1.0f), "", new Data());
+		Result fixture = new Result(new Float(1.0f), "", new Long(1L), new Data());
 		Float value = new Float(1.0f);
 
 		fixture.setValue(value);
@@ -389,12 +467,12 @@ public class ResultTest {
 	 *
 	 * @throws Exception
 	 *
-	 * @generatedBy CodePro at 9/25/13 6:54 PM
+	 * @generatedBy CodePro at 9/25/13 11:10 PM
 	 */
 	@Test
 	public void testToString_1()
 		throws Exception {
-		Result fixture = new Result(new Float(1.0f), "", new Data());
+		Result fixture = new Result(new Float(1.0f), "", new Long(1L), new Data());
 
 		String result = fixture.toString();
 
@@ -410,7 +488,7 @@ public class ResultTest {
 	 * @throws Exception
 	 *         if the initialization fails for some reason
 	 *
-	 * @generatedBy CodePro at 9/25/13 6:54 PM
+	 * @generatedBy CodePro at 9/25/13 11:10 PM
 	 */
 	@Before
 	public void setUp()
@@ -424,7 +502,7 @@ public class ResultTest {
 	 * @throws Exception
 	 *         if the clean-up fails for some reason
 	 *
-	 * @generatedBy CodePro at 9/25/13 6:54 PM
+	 * @generatedBy CodePro at 9/25/13 11:10 PM
 	 */
 	@After
 	public void tearDown()
@@ -437,7 +515,7 @@ public class ResultTest {
 	 *
 	 * @param args the command line arguments
 	 *
-	 * @generatedBy CodePro at 9/25/13 6:54 PM
+	 * @generatedBy CodePro at 9/25/13 11:10 PM
 	 */
 	public static void main(String[] args) {
 		new org.junit.runner.JUnitCore().run(ResultTest.class);

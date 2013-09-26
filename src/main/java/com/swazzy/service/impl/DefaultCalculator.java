@@ -27,9 +27,12 @@ public class DefaultCalculator implements Calculator {
 	 */
 	@Override
 	public Result calculateProduct(Data data) {
+		Long nsStart = System.nanoTime();
 		Result result=new Result();
+		result.setNanoStart(nsStart);
 		result.setName("product");
 		result.setValue( data.getDataA() * data.getDataB() * data.getDataC() );
+		result.setNsCompleted(System.nanoTime() - nsStart);
 		return result;
 	}
 
@@ -38,9 +41,12 @@ public class DefaultCalculator implements Calculator {
 	 */
 	@Override
 	public Result calculateSum(Data data) {
+		Long nsStart = System.nanoTime();
 		Result result=new Result();
+		result.setNanoStart(nsStart);
 		result.setName("sum");
 		result.setValue( (Float) (data.getDataA() + data.getDataB() + data.getDataC()));
+		result.setNsCompleted(System.nanoTime() - nsStart);
 		return result;
 	}
 
@@ -49,7 +55,9 @@ public class DefaultCalculator implements Calculator {
 	 */
 	@Override
 	public Result calculateFibonacci(int n) {
+		Long nsStart = System.nanoTime();
 		Result result=new Result();
+		result.setNanoStart(nsStart);
 		result.setName("fib");
 		if (n<=1) {
 			result.setValue((float)n);
@@ -57,14 +65,18 @@ public class DefaultCalculator implements Calculator {
 		}
 		
 		result.setValue( this.calculateFibonacci(n-1).getValue() + this.calculateFibonacci(n-2).getValue());
+		result.setNsCompleted(System.nanoTime() - nsStart);
 		return result;
 	}
 
 	@Override
 	public Result add(final Result result01, final Result result02) {
+		Long nsStart = System.nanoTime();
 		Result result = new Result();
+		result.setNanoStart(nsStart);
 		result.setName(result01.getName());
 		result.setValue(result01.getValue() + result02.getValue());
+		result.setNsCompleted(System.nanoTime() - nsStart);
 		return result;
 	}
 

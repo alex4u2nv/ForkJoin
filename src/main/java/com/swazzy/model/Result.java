@@ -20,7 +20,15 @@ public class Result implements Serializable{
 	static Logger log = Logger.getLogger(Result.class);
 	Float value;
 	String name;
+	Long nsCompleted;
 	Data data;
+	Long nanoStart;
+	public Long getNanoStart() {
+		return nanoStart;
+	}
+	public void setNanoStart(Long nanoStart) {
+		this.nanoStart = nanoStart;
+	}
 	public Float getValue() {
 		return value;
 	}
@@ -44,6 +52,7 @@ public class Result implements Serializable{
 		this.value = value;
 		this.name = name;
 		this.data = data;
+		this.nsCompleted=0L;
 	}
 	public Result() {
 		super();
@@ -54,7 +63,11 @@ public class Result implements Serializable{
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((data == null) ? 0 : data.hashCode());
+		result = prime * result
+				+ ((nsCompleted == null) ? 0 : nsCompleted.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		result = prime * result
+				+ ((nanoStart == null) ? 0 : nanoStart.hashCode());
 		result = prime * result + ((value == null) ? 0 : value.hashCode());
 		return result;
 	}
@@ -72,10 +85,20 @@ public class Result implements Serializable{
 				return false;
 		} else if (!data.equals(other.data))
 			return false;
+		if (nsCompleted == null) {
+			if (other.nsCompleted != null)
+				return false;
+		} else if (!nsCompleted.equals(other.nsCompleted))
+			return false;
 		if (name == null) {
 			if (other.name != null)
 				return false;
 		} else if (!name.equals(other.name))
+			return false;
+		if (nanoStart == null) {
+			if (other.nanoStart != null)
+				return false;
+		} else if (!nanoStart.equals(other.nanoStart))
 			return false;
 		if (value == null) {
 			if (other.value != null)
@@ -86,8 +109,22 @@ public class Result implements Serializable{
 	}
 	@Override
 	public String toString() {
-		return "Result [value=" + value + ", name=" + name + ", data=" + data
+		return "Result [value=" + value + ", name=" + name + ", nsCompleted="
+				+ nsCompleted + ", data=" + data + ", nanoStart=" + nanoStart
 				+ "]";
+	}
+	public Long getNsCompleted() {
+		return nsCompleted;
+	}
+	public void setNsCompleted(Long nsCompleted) {
+		this.nsCompleted = nsCompleted;
+	}
+	public Result(Float value, String name, Long nsCompleted, Data data) {
+		super();
+		this.value = value;
+		this.name = name;
+		this.nsCompleted = nsCompleted;
+		this.data = data;
 	}
 
 	
