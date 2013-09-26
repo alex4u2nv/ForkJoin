@@ -17,7 +17,6 @@ public class Result implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 6733624267649460345L;
-	static Logger log = Logger.getLogger(Result.class);
 	Float value;
 	String name;
 	Long nsCompleted;
@@ -125,6 +124,15 @@ public class Result implements Serializable{
 		this.name = name;
 		this.nsCompleted = nsCompleted;
 		this.data = data;
+	}
+	public Result(Float value, String name, Long nsCompleted, Data data,
+			Long nanoStart) {
+		super();
+		this.value = value;
+		this.name = name;
+		this.nsCompleted = nsCompleted;
+		this.data = data;
+		this.nanoStart = nanoStart;
 	}
 
 	

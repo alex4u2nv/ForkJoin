@@ -16,7 +16,6 @@ public class Data implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = -8958384032393113534L;
-	static Logger log = Logger.getLogger(Data.class);
 	private Long id;
 	private Float dataA;
 	private Float dataB;

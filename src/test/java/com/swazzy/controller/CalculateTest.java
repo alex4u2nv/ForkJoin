@@ -38,7 +38,7 @@ public class CalculateTest extends TestCase {
 		Calculate fixture = new Calculate();
 		fixture.dataService = new DefaultDataService();
 		fixture.calculator = new DefaultCalculator();
-		Integer size = Integer.valueOf(40);
+		Integer size = Integer.valueOf(50);
 
 		fixture.performCalculation(size);
 

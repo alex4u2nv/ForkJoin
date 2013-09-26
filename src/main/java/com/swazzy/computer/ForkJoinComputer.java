@@ -116,9 +116,10 @@ public class ForkJoinComputer extends RecursiveTask<Result> {
 			@Override
 			public Result calculate(Data data) {
 				int n = Integer.parseInt(data.getId().toString());
+				int processors = Runtime.getRuntime().availableProcessors();
 				Long nsStart = System.nanoTime();
 				log.trace("Forking Fibonacci calculations for : " + data);
-				if (data.getId() <= 1) {
+				if (data.getId() <= processors) {
 					
 					Result result =_calculator.calculateFibonacci(n);
 					result.setNsCompleted(System.nanoTime() - nsStart);
