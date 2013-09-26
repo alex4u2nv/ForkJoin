@@ -6,6 +6,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.RecursiveTask;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import org.apache.commons.lang.SerializationUtils;
 import org.apache.log4j.Logger;
@@ -34,6 +35,7 @@ public class ForkJoinComputer extends RecursiveTask<Result> {
 	public List<Result> getResults() {
 		return results;
 	}
+	private static AtomicInteger calculationOrder=new AtomicInteger(0);
 
 	/**
 	 * 
@@ -73,7 +75,9 @@ public class ForkJoinComputer extends RecursiveTask<Result> {
 			@Override
 			public Result calculate(Data data) {
 				log.trace("Summation calculations for : " + data);
-				return _calculator.calculateSum(data);
+				Result result= _calculator.calculateSum(data);
+				result.setCalculationOrder(calculationOrder.incrementAndGet());
+				return result;
 			}
 		});
 		return fjw;
@@ -94,7 +98,9 @@ public class ForkJoinComputer extends RecursiveTask<Result> {
 			@Override
 			public Result calculate(Data data) {
 				log.trace("Product calculations for : " + data);
-				return _calculator.calculateProduct(data);
+				Result result= _calculator.calculateProduct(data);
+				result.setCalculationOrder(calculationOrder.incrementAndGet());
+				return result;
 			}
 		});
 		return fjw;
@@ -119,19 +125,28 @@ public class ForkJoinComputer extends RecursiveTask<Result> {
 				int processors = Runtime.getRuntime().availableProcessors();
 				Long nsStart = System.nanoTime();
 				log.trace("Forking Fibonacci calculations for : " + data);
-				if (data.getId() <= processors) {
+				if (data.getId() <= 10) {
 					
 					Result result =_calculator.calculateFibonacci(n);
 					result.setNsCompleted(System.nanoTime() - nsStart);
+					result.setCalculationOrder(calculationOrder.incrementAndGet());
+					result.setData(data);
 					return result;
 				}
+				
+				Data data1 = (Data) SerializationUtils.clone(data);
 				Data data2 = (Data) SerializationUtils.clone(data);
+				data1.setId(data.getId()-1);
 				data2.setId(data.getId()-2);
-				ForkJoinComputer fjwComputer = generateFibonacciWorker(data2);
-				fjwComputer.fork();
-				Result result= _calculator.add(_calculator.calculateFibonacci(n - 1),
-						fjwComputer.join());
+				
+				ForkJoinComputer fjwComputer1 = generateFibonacciWorker(data1);
+				ForkJoinComputer fjwComputer2 = generateFibonacciWorker(data2);
+				fjwComputer2.fork();
+				Result result= _calculator.add(fjwComputer1.compute(),
+						fjwComputer2.join());
 				result.setNsCompleted(System.nanoTime() - nsStart);
+				result.setCalculationOrder(calculationOrder.incrementAndGet());
+				result.setData(data);
 				return result;
 
 			}
@@ -155,6 +170,7 @@ public class ForkJoinComputer extends RecursiveTask<Result> {
 				ForkJoinComputer fjws = this.getSummationWorker(data);
 				fjws.fork();
 				workers.add(fjws);
+				
 				ForkJoinComputer fjwp = this.generateProductWorker(data);
 				fjwp.fork();
 				workers.add(fjwp);

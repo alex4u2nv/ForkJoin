@@ -33,6 +33,7 @@ public class DefaultCalculator implements Calculator {
 		result.setName("product");
 		result.setValue( data.getDataA() * data.getDataB() * data.getDataC() );
 		result.setNsCompleted(System.nanoTime() - nsStart);
+		result.setData(data);
 		return result;
 	}
 
@@ -47,6 +48,7 @@ public class DefaultCalculator implements Calculator {
 		result.setName("sum");
 		result.setValue( (Float) (data.getDataA() + data.getDataB() + data.getDataC()));
 		result.setNsCompleted(System.nanoTime() - nsStart);
+		result.setData(data);
 		return result;
 	}
 

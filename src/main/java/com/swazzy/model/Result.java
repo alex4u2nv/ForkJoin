@@ -19,9 +19,17 @@ public class Result implements Serializable{
 	private static final long serialVersionUID = 6733624267649460345L;
 	Float value;
 	String name;
+	Long did;
+	public Long getDid() {
+		return did;
+	}
+	public void setDid(Long did) {
+		this.did = did;
+	}
 	Long nsCompleted;
 	Data data;
 	Long nanoStart;
+	int calculationOrder;
 	public Long getNanoStart() {
 		return nanoStart;
 	}
@@ -45,6 +53,7 @@ public class Result implements Serializable{
 	}
 	public void setData(Data data) {
 		this.data = data;
+		this.did = data.getId();
 	}
 	public Result(Float value, String name, Data data) {
 		super();
@@ -133,6 +142,12 @@ public class Result implements Serializable{
 		this.nsCompleted = nsCompleted;
 		this.data = data;
 		this.nanoStart = nanoStart;
+	}
+	public int getCalculationOrder() {
+		return calculationOrder;
+	}
+	public void setCalculationOrder(int calculationOrder) {
+		this.calculationOrder = calculationOrder;
 	}
 
 	

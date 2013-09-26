@@ -49,7 +49,7 @@ public class Calculate {
 
 				@Override
 				public int compare(Result o1, Result o2) {
-					 return (o1.getNanoStart()>o2.getNanoStart() ? 1 : (o1.getNanoStart()==o2.getNanoStart() ? 0 : -1));
+					 return (o1.getNanoStart()>o2.getCalculationOrder() ? 1 : (o1.getCalculationOrder()==o2.getCalculationOrder() ? 0 : -1));
 				}
 			});
 			
